@@ -1,1 +1,40 @@
-{"id":"./","name":"Note","short_name":"Note","start_url":"./index.html","scope":"./","display":"standalone","display_override":["standalone"],"theme_color":"#f5f4ef","background_color":"#f5f4ef","description":"A calm, local-first notebook for ideas, lists, and checklists.","lang":"en","dir":"ltr","icons":[{"src":"icons/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},{"src":"icons/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]}
+{
+  "id": "/noteGPT/",
+  "name": "Note",
+  "short_name": "Note",
+  "start_url": "/noteGPT/",
+  "scope": "/noteGPT/",
+  "display": "standalone",
+  "display_override": ["standalone"],
+  "theme_color": "#f5f4ef",
+  "background_color": "#f5f4ef",
+  "description": "A calm, local-first notebook for ideas, lists, and checklists.",
+  "lang": "en",
+  "dir":"ltr",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}
