@@ -1,7 +1,7 @@
 {
   "id": "/noteGPT/",
-  "name": "Note",
-  "short_name": "Note",
+  "name": "Note GPT",
+  "short_name": "Note GPT",
   "start_url": "/noteGPT/",
   "scope": "/noteGPT/",
   "display": "standalone",
@@ -10,7 +10,7 @@
   "background_color": "#f5f4ef",
   "description": "A calm, local-first notebook for ideas, lists, and checklists.",
   "lang": "en",
-  "dir":"ltr",
+  "dir": "ltr",
   "icons": [
     {
       "src": "icons/icon-192.png",
