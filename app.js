@@ -1,4 +1,4 @@
-const KEY='note-app-v1';
+const KEY='notegpt-app-v1';
 const state={notes:[],selected:null,filter:'all',query:'',sort:'updated',theme:localStorage.getItem('note-theme')||'system',view:localStorage.getItem('note-view')||'list'};
 const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
 const uid=()=>crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2);
