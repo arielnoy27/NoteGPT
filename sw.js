@@ -1,11 +1,13 @@
-const CACHE = 'notegpt-shell-v1';
+const CACHE = 'notegpt-shell-v2';
 const ASSETS = [
   './',
   './index.html',
   './style.css',
   './app.js',
   './manifest.json',
-  './icons/icon.svg'
+  './icons/icon.svg',
+  './icons/icon-192.png',
+  './icons/icon-512.png'
 ];
 
 self.addEventListener('install', e => {

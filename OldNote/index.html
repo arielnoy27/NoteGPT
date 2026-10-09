@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f5f4ef" />
+  <meta name="description" content="Note is a calm, local-first notebook for ideas, lists, and checklists." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Note" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="style.css" />
+  <title>Note</title>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Note navigation">
+      <div class="brand"><span class="brand-mark">N</span><span>Note</span></div>
+      <button class="new-note-button" id="newNoteButton"><span class="plus">+</span> New note</button>
+      <nav class="nav-list" id="filterNav">
+        <button class="nav-item active" data-filter="all"><span class="nav-icon">◫</span> All notes <span class="count" id="allCount">0</span></button>
+        <button class="nav-item" data-filter="favorites"><span class="nav-icon">♡</span> Favorites <span class="count" id="favoriteCount">0</span></button>
+        <button class="nav-item" data-filter="pinned"><span class="nav-icon">⌖</span> Pinned <span class="count" id="pinnedCount">0</span></button>
+        <button class="nav-item" data-filter="recent"><span class="nav-icon">↻</span> Recently updated</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item" id="settingsButton"><span class="nav-icon">⚙</span> Settings</button>
+        <div class="storage-note"><span class="status-dot"></span> Saved locally in your browser</div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="mobile-brand"><span class="brand-mark">N</span><span>Note</span></div>
+        <div class="search-wrap"><span class="search-icon">⌕</span><input id="searchInput" type="search" placeholder="Search notes..." aria-label="Search notes" /></div>
+        <div class="top-actions"><button class="icon-button" id="themeButton" aria-label="Toggle theme" title="Toggle theme">☼</button><button class="icon-button settings-top" id="settingsTopButton" aria-label="Open settings">⚙</button></div>
+      </header>
+
+      <section class="workspace">
+        <div class="list-panel">
+          <div class="list-heading"><div><p class="eyebrow" id="listEyebrow">Your notebook</p><h1 id="listTitle">All notes</h1></div><select id="sortSelect" aria-label="Sort notes"><option value="updated">Last updated</option><option value="created">Date created</option><option value="alpha">Alphabetical</option></select></div>
+          <div id="notesList" class="notes-list"></div>
+        </div>
+        <section class="editor-panel" id="editorPanel" aria-label="Note editor">
+          <div id="emptyEditor" class="editor-empty"><div class="empty-icon">✎</div><h2>Select a note to begin</h2><p>Choose a note from your notebook, or create a fresh page for the next good idea.</p><button class="secondary-button" id="emptyNewButton">Create a note</button></div>
+          <form id="noteForm" class="note-editor hidden">
+            <div class="editor-toolbar"><button type="button" class="back-button" id="backButton">← <span>All notes</span></button><div class="editor-actions"><button type="button" class="toolbar-button" id="pinButton" aria-label="Pin note">⌖</button><button type="button" class="toolbar-button" id="favoriteButton" aria-label="Favorite note">♡</button><button type="button" class="toolbar-button" id="copyButton" aria-label="Copy note">⧉</button><button type="button" class="toolbar-button danger" id="deleteButton" aria-label="Delete note">⌫</button></div></div>
+            <input class="title-input" id="titleInput" placeholder="Untitled note" autocomplete="off" />
+            <div class="editor-meta"><span id="typeLabel">Note</span><span>·</span><span id="dateLabel">Not saved yet</span><span class="save-status" id="saveStatus">Saved locally</span></div>
+            <div class="editor-options"><div class="type-toggle"><button type="button" class="type-button active" data-type="note">Note</button><button type="button" class="type-button" data-type="checklist">Checklist</button></div><div class="color-picker" id="colorPicker" aria-label="Note color"><button type="button" data-color="paper" class="color-dot selected"></button><button type="button" data-color="mint" class="color-dot"></button><button type="button" data-color="peach" class="color-dot"></button><button type="button" data-color="lavender" class="color-dot"></button><button type="button" data-color="sky" class="color-dot"></button></div></div>
+            <textarea id="contentInput" placeholder="Start writing..."></textarea>
+            <div id="checklistEditor" class="checklist-editor hidden"><div class="checklist-add"><input id="taskInput" placeholder="Add a task and press Enter" /><button type="button" id="addTaskButton">Add</button></div><div id="tasksList"></div></div>
+            <div class="tag-area"><div id="tagList" class="tag-list"></div><input id="tagInput" placeholder="Add a tag..." /></div>
+            <div class="editor-footer"><span id="wordCount">0 words</span><button type="button" class="share-button" id="shareButton">Share note</button></div>
+          </form>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="settingsModal"><section class="modal" role="dialog" aria-modal="true" aria-labelledby="settingsTitle"><div class="modal-header"><h2 id="settingsTitle">Settings</h2><button class="icon-button" id="closeSettings" aria-label="Close settings">×</button></div><div class="settings-group"><h3>Appearance</h3><div class="theme-options"><button data-theme="light">Light</button><button data-theme="dark">Dark</button><button data-theme="system">System</button></div></div><div class="settings-group"><h3>Note layout</h3><div class="theme-options"><button data-view="list">List view</button><button data-view="grid">Grid view</button></div></div><div class="settings-group"><h3>Your data</h3><button class="setting-action" id="exportButton">Export all notes <span>→</span></button><button class="setting-action" id="importButton">Import notes <span>→</span></button><input id="importInput" type="file" accept="application/json" hidden /><button class="setting-action destructive" id="deleteAllButton">Delete all notes <span>→</span></button></div><p class="modal-footnote">Your notes never leave this device unless you choose to share or export them.</p></section></div>
+  <div class="toast" id="toast" role="status"></div>
+  <button class="fab" id="fab" aria-label="Create new note">+</button>
+  <script src="app.js"></script>
+</body>
+</html>
